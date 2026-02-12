@@ -1,0 +1,10 @@
+{
+  "DASHBOARD": {
+    "TITLE": "Overview",
+    "DESCRIPTION": "Keep track of your company's cash flow in real time.",
+    "BALANCE": "Total Balance",
+    "INCOME": "Incomes",
+    "EXPENSE": "Expenses",
+    "LAST_TRANSACTIONS": "Last Updated"
+  }
+}

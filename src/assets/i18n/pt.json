@@ -1,0 +1,10 @@
+{
+  "DASHBOARD": {
+    "TITLE": "Visão Geral",
+    "DESCRIPTION": "Acompanhe o fluxo de caixa da sua empresa em tempo real.",
+    "BALANCE": "Saldo Total",
+    "INCOME": "Entradas",
+    "EXPENSE": "Saídas",
+    "LAST_TRANSACTIONS": "Últimas movimentações"
+  }
+}
