@@ -1,21 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, signal, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import gsap from 'gsap';
-import Lenis from 'lenis';
+import { ChangeDetectorRef, Component, OnInit, signal, ViewChild } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { TransactionService, Transaction } from './services/transaction';
 import { SummaryCardsComponent } from './components/summary-cards/summary-cards';
 import { TransactionListComponent } from './components/transaction-list/transaction-list';
+import { HeaderComponent } from './components/header/header';
+import gsap from 'gsap';
+import Lenis from 'lenis';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TranslateModule, SummaryCardsComponent, TransactionListComponent],
+  imports: [CommonModule, TranslateModule, SummaryCardsComponent, TransactionListComponent, HeaderComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit, AfterViewInit {
+export class App implements OnInit {
   @ViewChild('contentWrapper') contentWrapper!: any;
 
   allTransactions: Transaction[] = [];
@@ -27,17 +27,9 @@ export class App implements OnInit, AfterViewInit {
   currentFilter: 'all' | 'income' | 'expense' = 'all';
 
   constructor(
-    private translate: TranslateService,
     private TransactionService: TransactionService,
     private cdr: ChangeDetectorRef
-  ) {
-    this.translate.setDefaultLang('pt');
-    this.translate.use('pt');
-  }
-
-  switchLanguage(language: string) {
-    this.translate.use(language);
-  }
+  ) {}
 
   setFilter(filterType: 'all' | 'income' | 'expense') {
     this.currentFilter = filterType;
@@ -96,17 +88,6 @@ export class App implements OnInit, AfterViewInit {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-  }
-
-  ngAfterViewInit(): void {
-    const tl = gsap.timeline();
-
-    tl.from('.header-animate', {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power3.out'
-    })
   }
   protected readonly title = signal('finances-dashboard');
 }

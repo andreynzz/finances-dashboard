@@ -1,0 +1,88 @@
+$primary: #2563EB;
+$dark: #0F172A;
+$bg: #F1F5F9;
+$card-bg: #FFFFFF;
+$text-main: #334155;
+$text-light: #64748B;
+$success: #10B981;
+$danger: #EF4444;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .logo-shape {
+      width: 32px;
+      height: 32px;
+      background: $primary;
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $dark;
+      margin: 0;
+      span { color: $primary; }
+    }
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-info {
+      text-align: right;
+      .name { display: block; font-weight: 600; font-size: 0.9rem; }
+      .role { display: block; font-size: 0.75rem; color: $text-light; }
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      background: #E2E8F0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: $primary;
+    }
+  }
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748B;
+
+  .lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    color: inherit;
+    font-weight: inherit;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #2563EB;
+    }
+  }
+
+  .divider {
+    opacity: 0.3;
+  }
+}
