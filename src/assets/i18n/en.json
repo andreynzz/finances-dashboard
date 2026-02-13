@@ -5,6 +5,7 @@
     "BALANCE": "Total Balance",
     "INCOME": "Incomes",
     "EXPENSE": "Expenses",
-    "LAST_TRANSACTIONS": "Last Updated"
+    "LAST_TRANSACTIONS": "Last Updated",
+    "FINANCE_EVOLUTION": "Finance Evolution"
   }
 }

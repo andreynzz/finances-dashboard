@@ -5,6 +5,7 @@
     "BALANCE": "Saldo Total",
     "INCOME": "Entradas",
     "EXPENSE": "Saídas",
-    "LAST_TRANSACTIONS": "Últimas movimentações"
+    "LAST_TRANSACTIONS": "Últimas movimentações",
+    "FINANCE_EVOLUTION": "Evolução Financeira"
   }
 }

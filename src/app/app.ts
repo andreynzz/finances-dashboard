@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header';
 import gsap from 'gsap';
 import Lenis from 'lenis';
 import { NewTransactionModalComponent } from './components/new-transaction-modal/new-transaction-modal';
+import { FinancialChartComponent } from './components/financial-chart/financial-chart';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ import { NewTransactionModalComponent } from './components/new-transaction-modal
     SummaryCardsComponent,
     TransactionListComponent,
     HeaderComponent,
-    NewTransactionModalComponent
+    NewTransactionModalComponent,
+    FinancialChartComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
