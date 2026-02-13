@@ -1,0 +1,52 @@
+<div class="dashboard-wrapper" #contentWrapper>
+
+  <app-header></app-header>
+
+  <main>
+    <div class="page-title header-animate">
+      <h2>{{ 'DASHBOARD.TITLE' | translate }}</h2>
+      <p>{{ 'DASHBOARD.DESCRIPTION' | translate }}</p>
+    </div>
+
+    <app-summary-cards [transactions]="transactions"></app-summary-cards>
+    <app-financial-chart [transactions]="transactions"></app-financial-chart>
+    <section class="transactions-section">
+      <div class="section-header">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <h3>{{ 'DASHBOARD.LAST_TRANSACTIONS' | translate }}</h3>
+
+          <div class="filters">
+            <button class="type1" [class.active]="currentFilter === 'all'" (click)="setFilter('all')">
+              <span class="btn-txt">Todas</span>
+            </button>
+            <button [class.active]="currentFilter === 'income'" (click)="setFilter('income')">
+              <span class="btn-txt">Entradas</span>
+            </button>
+            <button [class.active]="currentFilter === 'expense'" (click)="setFilter('expense')">
+              <span class="btn-txt">Saídas</span>
+            </button>
+          </div>
+        </div>
+
+        <app-transaction-list
+          [transactions]="transactions"
+          [isLoading]="isLoading"
+          (delete)="handleDeleteTransaction($any($event))"
+        >
+        </app-transaction-list>
+      </div>
+
+      <div class="actions-bar" style="text-align: right; margin-bottom: 1rem;">
+        <button (click)="toggleModal(true)" class="btn-primary" style="background: #2563EB; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold;">
+          + Nova Transação
+        </button>
+      </div>
+
+      <app-new-transaction-modal
+        *ngIf="isModalOpen"
+        (close)="toggleModal(false)"
+        (save)="handleAddTransaction($event)">
+      </app-new-transaction-modal>
+    </section>
+  </main>
+</div>
