@@ -139,6 +139,7 @@ header {
   border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  width: 100%;
 
   .transaction-item {
     display: flex;
@@ -206,5 +207,51 @@ header {
 
   .divider {
     opacity: 0.3;
+  }
+}
+
+// --- Transactions List ---
+.transactions-section {
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h3 {
+      color: $text-light;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .filters {
+      display: flex;
+      background-color: #E2E8F0;
+      padding: 4px;
+      border-radius: 8px;
+      margin: 8px;
+
+      button {
+        border: none;
+        background: transparent;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $text-light;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover { color: $dark; }
+
+        &.active {
+          background-color: $card-bg;
+          color: $primary;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+      }
+    }
   }
 }

@@ -16,9 +16,13 @@ import { TransactionService, Transaction } from './services/transaction';
 export class App implements OnInit, AfterViewInit {
   @ViewChild('contentWrapper') contentWrapper!: any;
 
+  allTransactions: Transaction[] = [];
+
   transactions: Transaction[] = [];
 
   isLoading: boolean = true;
+
+  currentFilter: 'all' | 'income' | 'expense' = 'all';
 
   constructor(
     private translate: TranslateService,
@@ -33,9 +37,27 @@ export class App implements OnInit, AfterViewInit {
     this.translate.use(language);
   }
 
+  setFilter(filterType: 'all' | 'income' | 'expense') {
+    this.currentFilter = filterType;
+
+    if (filterType === 'all') {
+      this.transactions = [...this.allTransactions];
+    } else {
+      this.transactions = this.allTransactions.filter(item => item.type === filterType);
+    }
+
+    this.cdr.detectChanges();
+
+    gsap.fromTo('.transaction-item',
+      { x: -10, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.3, stagger: 0.05 }
+    );
+  }
+
   ngOnInit(): void {
     this.TransactionService.getTransactions().subscribe({
       next: (data) => {
+        this.allTransactions = data;
         this.transactions = data;
         this.isLoading = false;
 
