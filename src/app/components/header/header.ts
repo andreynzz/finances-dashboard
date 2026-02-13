@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { TransactionService } from '../../services/transaction';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-header',

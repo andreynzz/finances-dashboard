@@ -1,0 +1,39 @@
+<div class="modal-overlay" (click)="onCancel()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+
+    <h3>Nova Transação</h3>
+
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Descrição</label>
+        <input type="text" formControlName="label" placeholder="Ex: Aluguel do Escritório">
+        <span class="error" *ngIf="transactionForm.get('label')?.invalid && transactionForm.get('label')?.touched">
+          Mínimo de 3 caracteres
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label>Valor (R$)</label>
+        <input type="number" formControlName="value" placeholder="0,00">
+      </div>
+
+      <div class="form-group row">
+        <label class="radio-label">
+          <input type="radio" formControlName="type" value="income">
+          <span>Entrada</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" formControlName="type" value="expense">
+          <span>Saída</span>
+        </label>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">Cancelar</button>
+        <button type="submit" class="btn-save" [disabled]="transactionForm.invalid">Salvar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

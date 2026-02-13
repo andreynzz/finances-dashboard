@@ -7,11 +7,19 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { HeaderComponent } from './components/header/header';
 import gsap from 'gsap';
 import Lenis from 'lenis';
+import { NewTransactionModalComponent } from './components/new-transaction-modal/new-transaction-modal';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TranslateModule, SummaryCardsComponent, TransactionListComponent, HeaderComponent],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    SummaryCardsComponent,
+    TransactionListComponent,
+    HeaderComponent,
+    NewTransactionModalComponent
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -46,6 +54,19 @@ export class App implements OnInit {
       { x: -10, opacity: 0 },
       { x: 0, opacity: 1, duration: 0.3, stagger: 0.05 }
     );
+  }
+
+  isModalOpen: boolean = false;
+
+  // Função para abrir/fechar o modal
+  toggleModal(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  handleAddTransaction(newTransaction: Transaction) {
+    this.allTransactions = [newTransaction, ...this.allTransactions];
+    this.setFilter(this.currentFilter);
+    this.toggleModal(false);
   }
 
   ngOnInit(): void {

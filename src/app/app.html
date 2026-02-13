@@ -33,6 +33,18 @@
           [isLoading]="isLoading">
         </app-transaction-list>
       </div>
+
+      <div class="actions-bar" style="text-align: right; margin-bottom: 1rem;">
+        <button (click)="toggleModal(true)" class="btn-primary" style="background: #2563EB; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold;">
+          + Nova Transação
+        </button>
+      </div>
+
+      <app-new-transaction-modal
+        *ngIf="isModalOpen"
+        (close)="toggleModal(false)"
+        (save)="handleAddTransaction($event)">
+      </app-new-transaction-modal>
     </section>
   </main>
 </div>
