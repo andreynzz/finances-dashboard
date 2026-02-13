@@ -5,11 +5,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import gsap from 'gsap';
 import Lenis from 'lenis';
 import { TransactionService, Transaction } from './services/transaction';
+import { SummaryCardsComponent } from './components/summary-cards/summary-cards';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, SummaryCardsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

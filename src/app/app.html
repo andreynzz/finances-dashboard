@@ -26,22 +26,7 @@
       <p>{{ 'DASHBOARD.DESCRIPTION' | translate }}</p>
     </div>
 
-    <div class="cards-grid">
-      <div class="card card-animate balance">
-        <span class="label">{{ 'DASHBOARD.BALANCE' | translate }}</span>
-        <strong class="value">R$ 14.250,00</strong>
-      </div>
-
-      <div class="card card-animate income">
-        <span class="label">{{ 'DASHBOARD.INCOME' | translate }}</span>
-        <strong class="value">+ R$ 5.850,00</strong>
-      </div>
-
-      <div class="card card-animate expense">
-        <span class="label">{{ 'DASHBOARD.EXPENSE' | translate }}</span>
-        <strong class="value">- R$ 4.179,90</strong>
-      </div>
-    </div>
+    <app-summary-cards [transactions]="transactions"></app-summary-cards>
 
     <section class="transactions-section">
       <div class="section-header">

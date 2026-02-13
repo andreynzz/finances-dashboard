@@ -1,0 +1,16 @@
+<div class="cards-grid">
+  <div class="card card-animate balance">
+    <span class="label">{{ 'DASHBOARD.BALANCE' | translate }}</span>
+    <strong class="value">{{ balance | currency:'BRL':'symbol':'1.2-2' }}</strong>
+  </div>
+
+  <div class="card card-animate income">
+    <span class="label">{{ 'DASHBOARD.INCOME' | translate }}</span>
+    <strong class="value">+ {{ totalIncome | currency:'BRL':'symbol':'1.2-2' }}</strong>
+  </div>
+
+  <div class="card card-animate expense">
+    <span class="label">{{ 'DASHBOARD.EXPENSE' | translate }}</span>
+    <strong class="value">- {{ totalExpense | currency:'BRL':'symbol':'1.2-2' }}</strong>
+  </div>
+</div>
