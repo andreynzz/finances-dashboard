@@ -1,0 +1,23 @@
+<div class="transactions-list">
+  <div *ngIf="isLoading" class="loading-state" style="padding: 2rem; text-align: center; color: #64748B;">
+    A carregar dados de forma segura...
+  </div>
+
+  <ng-container *ngIf="!isLoading">
+    <div *ngFor="let item of transactions" class="transaction-item list-item">
+      <div class="icon" [class.expense]="item.type === 'expense'">
+        {{ item.type === 'expense' ? '↓' : '↑' }}
+      </div>
+
+      <div class="details">
+        <span class="desc">{{ item.label }}</span>
+        <span class="date">{{ item.date }}</span>
+      </div>
+
+      <div class="amount" [class.expense]="item.type === 'expense'">
+        {{ item.type === 'expense' ? '-' : '+' }}
+        {{ item.value | currency:'BRL':'symbol':'1.2-2' }}
+      </div>
+    </div>
+  </ng-container>
+</div>

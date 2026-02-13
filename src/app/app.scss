@@ -93,54 +93,6 @@ header {
   h3 { color: $text-light; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; }
 }
 
-.transactions-list {
-  background: $card-bg;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  width: 100%;
-
-  .transaction-item {
-    display: flex;
-    align-items: center;
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid #F1F5F9;
-
-    &:last-child { border-bottom: none; }
-    &:hover { background-color: #FAFAFA; }
-
-    .icon {
-      width: 40px;
-      height: 40px;
-      background: rgba($success, 0.1);
-      color: $success;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      margin-right: 1rem;
-
-      &.expense {
-        background: rgba($danger, 0.1);
-        color: $danger;
-      }
-    }
-
-    .details {
-      flex: 1;
-      .desc { display: block; font-weight: 600; color: $dark; }
-      .date { font-size: 0.8rem; color: $text-light; }
-    }
-
-    .amount {
-      font-weight: 700;
-      color: $success;
-      &.expense { color: $danger; }
-    }
-  }
-}
-
 .lang-switch {
   display: flex;
   align-items: center;
@@ -174,8 +126,6 @@ header {
   .section-header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 1rem;
 
     h3 {

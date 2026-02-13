@@ -6,11 +6,12 @@ import gsap from 'gsap';
 import Lenis from 'lenis';
 import { TransactionService, Transaction } from './services/transaction';
 import { SummaryCardsComponent } from './components/summary-cards/summary-cards';
+import { TransactionListComponent } from './components/transaction-list/transaction-list';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TranslateModule, SummaryCardsComponent],
+  imports: [CommonModule, TranslateModule, SummaryCardsComponent, TransactionListComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

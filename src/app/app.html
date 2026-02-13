@@ -30,10 +30,10 @@
 
     <section class="transactions-section">
       <div class="section-header">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <h3>{{ 'DASHBOARD.LAST_TRANSACTIONS' | translate }}</h3>
 
-        <h3>{{ 'DASHBOARD.LAST_TRANSACTIONS' | translate }}</h3>
-
-        <div class="filters">
+          <div class="filters">
             <button class="type1" [class.active]="currentFilter === 'all'" (click)="setFilter('all')">
               <span class="btn-txt">Todas</span>
             </button>
@@ -44,30 +44,12 @@
               <span class="btn-txt">Saídas</span>
             </button>
           </div>
-
-        <div class="transactions-list">
-          <div *ngIf="isLoading" class="loading-state" style="padding: 2rem; text-align: center; color: #64748B;">
-            A carregar dados de forma segura...
-          </div>
-
-          <ng-container *ngIf="!isLoading">
-            <div *ngFor="let item of transactions" class="transaction-item list-item">
-              <div class="icon" [class.expense]="item.type === 'expense'">
-                {{ item.type === 'expense' ? '↓' : '↑' }}
-              </div>
-
-              <div class="details">
-                <span class="desc">{{ item.label }}</span>
-                <span class="date">{{ item.date }}</span>
-              </div>
-
-              <div class="amount" [class.expense]="item.type === 'expense'">
-                {{ item.type === 'expense' ? '-' : '+' }}
-                {{ item.value | currency:'BRL':'symbol':'1.2-2' }}
-              </div>
-            </div>
-          </ng-container>
         </div>
+
+        <app-transaction-list
+          [transactions]="transactions"
+          [isLoading]="isLoading">
+        </app-transaction-list>
       </div>
     </section>
   </main>
