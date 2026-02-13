@@ -1,19 +1,42 @@
-<header class="header-animate">
+<header class="glass-header header-animate">
   <div class="brand">
-    <div class="logo-shape"></div>
-    <h1>Finance <span>Manager</span></h1>
+    <div class="logo-icon">
+      <div class="shape-1"></div>
+      <div class="shape-2"></div>
+    </div>
+    <div class="brand-text">
+      <h1>Finance<span>Manager</span></h1>
+    </div>
   </div>
-  <div class="user-profile">
-    <div class="lang-switch">
-      <button (click)="switchLanguage('pt')" class="lang-btn">PT</button>
-      <span class="divider">|</span>
-      <button (click)="switchLanguage('en')" class="lang-btn">EN</button>
+
+  <div class="actions-area">
+    <div class="lang-pill">
+      <button
+        (click)="switchLanguage('pt')"
+        class="lang-btn"
+        [class.active]="currentLang === 'pt'"
+      >
+        PT
+      </button>
+
+      <button
+        (click)="switchLanguage('en')"
+        class="lang-btn"
+        [class.active]="currentLang === 'en'"
+      >
+        EN
+      </button>
     </div>
 
-    <div class="user-info">
-      <span class="name">Estagiário Dev</span>
-      <span class="role">Admin</span>
+    <div class="divider"></div>
+
+    <div class="user-profile">
+      <div class="info">
+        <span class="greeting">Olá, <strong>Estagiário</strong></span>
+      </div>
+      <div class="avatar-ring">
+        <div class="avatar">EB</div>
+      </div>
     </div>
-    <div class="avatar">EB</div>
   </div>
 </header>

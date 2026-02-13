@@ -14,6 +14,8 @@ export class HeaderComponent implements AfterViewInit{
   @Input() transaction: TransactionService[] = [];
   @Input() isLoading: boolean = true;
 
+  currentLang: string = 'pt';
+
   constructor(
     private translate: TranslateService,
   ) {
@@ -24,13 +26,14 @@ export class HeaderComponent implements AfterViewInit{
 
   switchLanguage(language: string) {
     this.translate.use(language);
+    this.currentLang = language;
   }
 
   ngAfterViewInit(): void {
     const tl = gsap.timeline();
 
     tl.from('.header-animate', {
-      y: 30,
+      y: -20,
       opacity: 0,
       duration: 0.8,
       ease: 'power3.out'

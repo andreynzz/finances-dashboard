@@ -1,68 +1,206 @@
 $primary: #2563EB;
-$dark: #0F172A;
+$success: #10B981;
 $danger: #EF4444;
+$dark: #0F172A;
 
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.5); // Fundo escuro transparente
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(4px); // Efeito de desfoque no fundo
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
 }
 
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
+.modal-glass {
+  background: #FFFFFF;
   width: 90%;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  animation: slideUp 0.3s ease-out;
+  max-width: 420px;
+  border-radius: 32px;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 
-  h3 { margin-top: 0; color: $dark; }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, $primary, $success);
+  }
 }
 
-.form-group {
-  margin-bottom: 1rem;
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 
-  label { display: block; font-size: 0.85rem; color: #64748B; margin-bottom: 0.4rem; }
-
-  input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #CBD5E1;
-    border-radius: 8px;
-    font-size: 1rem;
-    &:focus { outline: none; border-color: $primary; }
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: $dark;
+    font-weight: 700;
   }
 
-  .error { color: $danger; font-size: 0.75rem; display: block; margin-top: 4px; }
+  .close-btn {
+    background: #F1F5F9;
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: #64748B;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover { background: #E2E8F0; color: $danger; }
+  }
 }
 
-.row { display: flex; gap: 1rem; }
+.big-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
 
-.radio-label {
-  display: flex; align-items: center; gap: 6px; cursor: pointer;
+  .currency {
+    font-size: 1.5rem;
+    color: #94A3B8;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+
+  .big-value-input {
+    border: none;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $dark;
+    width: 200px;
+    text-align: center;
+    outline: none;
+    background: transparent;
+
+    &::placeholder { color: #CBD5E1; }
+  }
+
+  // Remove setas do input number
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 }
 
-.modal-actions {
-  display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;
+.center-error {
+  text-align: center;
+  color: $danger;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
 
-  button {
-    padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; border: none;
+// --- Type Selector Cards ---
+.type-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 
-    &.btn-cancel { background: transparent; color: #64748B; }
-    &.btn-save {
-      background: $primary; color: white;
-      &:disabled { opacity: 0.5; cursor: not-allowed; }
+  .type-option {
+    cursor: pointer;
+    border: 2px solid #F1F5F9;
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+
+    .icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .icon.income { background: rgba($success, 0.1); color: $success; }
+    .icon.expense { background: rgba($danger, 0.1); color: $danger; }
+    span { font-size: 0.9rem; font-weight: 600; color: #64748B; }
+
+    &:hover { background: #F8FAFC; border-color: #E2E8F0; }
+
+    &.selected {
+      background: white;
+      border-color: $primary;
+      box-shadow: 0 4px 12px rgba($primary, 0.15);
+
+      span { color: $primary; }
     }
   }
 }
 
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+// --- Details Inputs ---
+.details-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .input-group {
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #64748B;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      color: $dark;
+      transition: all 0.2s;
+
+      &:focus {
+        background: white;
+        border-color: $primary;
+        outline: none;
+      }
+    }
+  }
 }
+
+// --- Botão de Ação ---
+.btn-save-glow {
+  width: 100%;
+  padding: 1rem;
+  background: $primary;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba($primary, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba($primary, 0.4);
+  }
+
+  &:disabled {
+    background: #CBD5E1;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
