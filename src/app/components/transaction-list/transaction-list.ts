@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Transaction } from '../../services/transaction';
 
 @Component({
@@ -11,4 +11,12 @@ import { Transaction } from '../../services/transaction';
 export class TransactionListComponent {
   @Input() transactions: Transaction[] = [];
   @Input() isLoading: boolean = true;
+
+  @Output() deleteTransaction = new EventEmitter<number>();
+
+  onDelete(id: number) {
+    if(confirm('Tem a certeza que deseja excluir esta transação?')) {
+      this.deleteTransaction.emit(id);
+    }
+  }
 }

@@ -52,3 +52,21 @@ $text-light: #64748B;
     }
   }
 }
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: #FEF2F2;
+    color: #EF4444;
+  }
+}

@@ -30,7 +30,9 @@
 
         <app-transaction-list
           [transactions]="transactions"
-          [isLoading]="isLoading">
+          [isLoading]="isLoading"
+          (delete)="handleDeleteTransaction($any($event))"
+        >
         </app-transaction-list>
       </div>
 

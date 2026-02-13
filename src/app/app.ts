@@ -69,6 +69,14 @@ export class App implements OnInit {
     this.toggleModal(false);
   }
 
+  // Função para remover a transação
+  handleDeleteTransaction(id: number) {
+    this.allTransactions = this.allTransactions.filter(t => t.id !== id);
+
+    // Atualiza a visualização (mantendo o filtro atual)
+    this.setFilter(this.currentFilter);
+  }
+
   ngOnInit(): void {
     this.TransactionService.getTransactions().subscribe({
       next: (data) => {
